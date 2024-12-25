@@ -25,6 +25,7 @@ class IncomeExpanseController extends Controller
         $isInput = request("is_input");
         $startDate = request("start_date");
         $endDate = request("end_date");
+        $id = request("type_id");
         $dataIncome = IncomeExpanse::select(
             'income_expanses.id',
             'income_expanses.value',
@@ -40,6 +41,11 @@ class IncomeExpanseController extends Controller
                 if ($search) {
                     $query->where('types.title', 'LIKE', "%$search%")
                         ->orWhere('income_expanses.comment', 'like', "%$search%");
+                }
+            })
+            ->where(function($query) use ($id){
+                if($id){
+                    $query->where('types.id', $id);
                 }
             })
             // ->where(function ($query) use ($isInput) {
@@ -61,10 +67,9 @@ class IncomeExpanseController extends Controller
                 }
             })
             ->where('income_expanses.user_id',  Auth::user()->id)
-
-
             ->join('types', 'types.id', '=', 'income_expanses.type_id')
             ->join('users', 'users.id', '=', 'income_expanses.user_id')
+            ->orderByDesc('id')
             ->paginate(env('PG '));
 
         return IncomeExpanseResource::collection($dataIncome);

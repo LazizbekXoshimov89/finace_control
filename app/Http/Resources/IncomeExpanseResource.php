@@ -20,8 +20,8 @@ class IncomeExpanseResource extends JsonResource
             "valyuta_turi"=>$this->currency,
             "kategoriyasi"=>$this->title,
             "nomi_izohi"=>$this->comment,
-            "yaratilgan_sana"=>$this->created_at->format('y.m.d'),
-            "ozgartirilgan_sana"=>$this->updated_at->format('y.m.d'),
+            "yaratilgan_sana"=>$this->created_at->format('d.m.Y'),
+            "ozgartirilgan_sana"=>$this->updated_at->format('d.m.Y'),
             "foydalanuvchi_ismi"=>$this->full_name,
             "turi"=>$this->is_input,
         ];

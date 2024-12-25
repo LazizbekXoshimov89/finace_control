@@ -18,7 +18,7 @@ class TypeResource extends JsonResource
             "id"=>$this->id,
             "title"=> $this->title,
             "user"=>$this->user->full_name,
-            "kirim/chiqim"=> $this->is_input, // => "kirim_chiqim" fix
+            "kirim_chiqim"=> $this->is_input, // => "kirim_chiqim" fix
             "active"=> $this->active,
         ];
     }

@@ -123,11 +123,11 @@ class UserController extends Controller
             'full_name' => $authUser->full_name,
             'phone' => $authUser->phone,
             'active' => $authUser->active,
-            'balans' => $dataUser->total_value,
-            'kirim' => $incomeInput,
+            'balans' =>number_format( $dataUser->total_value),
+            'kirim' =>number_format( $incomeInput),
              // where between dates qaysiki shu oy boshi dan hozirgacha =>
             //where('created_at', >=, date('Y-m) . '-01') davom and where user_id =Auth::user->id
-            'chiqim' => $incomeOutput
+            'chiqim' =>number_format( $incomeOutput)
 
         ]);
     }

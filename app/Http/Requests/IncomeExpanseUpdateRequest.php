@@ -24,7 +24,6 @@ class IncomeExpanseUpdateRequest extends FormRequest
         return [
             "value"=>"required",
             "comment"=>"required|string|min:3"
-
         ];
     }
 
